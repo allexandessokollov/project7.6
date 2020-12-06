@@ -41,7 +41,7 @@ void __fastcall TForm1::enterTextKeyDown(TObject *Sender, WORD &Key,
 int TForm1::countAnswer(String str)
 {
 
-    str += "";
+    str += " ";
     int counter = 0, tmpCounter = 0, strLength = str.Length();
     String strAnswer;
 

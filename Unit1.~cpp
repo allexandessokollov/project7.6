@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 /*
- Из строки, состоящей из букв, цифр, запятых, точек, знаков + и - ,
- выделить подстроку, которая соответствует записи целого числа.
+ Г€Г§ Г±ГІГ°Г®ГЄГЁ, Г±Г®Г±ГІГ®ГїГ№ГҐГ© ГЁГ§ ГЎГіГЄГў, Г¶ГЁГґГ°, Г§Г ГЇГїГІГ»Гµ, ГІГ®Г·ГҐГЄ, Г§Г­Г ГЄГ®Гў + ГЁ - ,
+ ГўГ»Г¤ГҐГ«ГЁГІГј ГЇГ®Г¤Г±ГІГ°Г®ГЄГі, ГЄГ®ГІГ®Г°Г Гї Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГҐГІ Г§Г ГЇГЁГ±ГЁ Г¶ГҐГ«Г®ГЈГ® Г·ГЁГ±Г«Г .
 */
 #include <vcl.h>
 #pragma hdrstop
@@ -41,6 +41,7 @@ void __fastcall TForm1::enterTextKeyDown(TObject *Sender, WORD &Key,
 int TForm1::countAnswer(String str)
 {
 
+    str += "";
     int counter = 0, tmpCounter = 0, strLength = str.Length();
     String strAnswer;
 
@@ -125,18 +126,3 @@ bool TForm1::isNumber(char ch)
     }
 }
 
-int TForm1::charToInt(char chArr[])
-{
-        int cArrLength = strlen(chArr);
-        int number = 0;
-
-        bool isNegative;
-
-        for(int i = 0; i < cArrLength; i++)
-        {
-            if(chArr[i] == '-')
-            {
-                isNegative == true;
-            }
-        }
-}
