@@ -1,8 +1,4 @@
 //---------------------------------------------------------------------------
-/*
- Èç ñòðîêè, ñîñòîÿùåé èç áóêâ, öèôð, çàïÿòûõ, òî÷åê, çíàêîâ + è - ,
- âûäåëèòü ïîäñòðîêó, êîòîðàÿ ñîîòâåòñòâóåò çàïèñè öåëîãî ÷èñëà.
-*/
 #include <vcl.h>
 #pragma hdrstop
 
@@ -32,97 +28,50 @@ void __fastcall TForm1::enterTextKeyDown(TObject *Sender, WORD &Key,
         String str;
         str =  enterText->Text;
 
-        countAnswer(str);
+        fingIntegerNumber(str);
     }        
 }
 //---------------------------------------------------------------------------
 
 
-int TForm1::countAnswer(String str)
+void TForm1::fingIntegerNumber(String str)
 {
 
-    str += " ";
     int counter = 0, tmpCounter = 0, strLength = str.Length();
-    String strAnswer;
-
 
     const char *chArr = str.c_str();
-    char num[128];
-    for(int i = 0; i < 128; i++)
-    {
-        num[i] = ' ';
-    }
+
+    String num;
 
     for(int i = 0; i < strLength; i++)
     {
 
         if(isNumber(chArr[i]))
         {
-            num[counter] = chArr[i];
-            counter++;
-
-            if(i > 0)
+            if(i > 0 && chArr[i - 1] == '-')
             {
-               if(chArr[i - 1] == '-')
-               {
-                   num[counter] = num[counter - 1];
-                   num[counter - 1] = chArr[i - 1];
-                   counter++;
-               }
-
+                num += chArr[i - 1];
             }
+            
+            num += chArr[i];
+            counter++;
         }
 
-        if( (counter > 0) && (!isNumber(chArr[i])) )
+        if( (counter > 0) && (i == strLength - 1 || !isNumber(chArr[i])))
         {
-            strAnswer = num;
-
-            answer->Caption = strAnswer;
-            return 1;
+            break;
         }
-
     }
 
-
-    return -999999;
+    answer->Caption = num;
+     if(counter == 0)
+    {
+      ShowMessage("\n\nthere is no integer number\n\n");
+    }
 }
 
 bool TForm1::isNumber(char ch)
 {
-    switch (ch)
-    {
-        case '0':
-        return true;
-
-        case '1':
-        return true;
-
-        case '2':
-        return true;
-
-        case '3':
-        return true;
-
-        case '4':
-        return true;
-
-        case '5':
-        return true;
-
-        case '6':
-        return true;
-
-        case '7':
-        return true;
-
-        case '8':
-        return true;
-
-        case '9':
-        return true;
-
-        default:
-        return false;
-    }
+    return (ch >= '0'  && ch <= '9');
 }
 

@@ -21,9 +21,11 @@ __published:	// IDE-managed Components
         void __fastcall enterTextKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
 private:
-        int countAnswer(String str);
+
+        void fingIntegerNumber(String str);
         bool isNumber(char ch);
         int charToInt(char chArr[]);	// User declarations
+
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
 };
